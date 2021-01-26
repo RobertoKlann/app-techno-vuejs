@@ -5,12 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Techno</title>
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700">
+
     <link rel="stylesheet" href="./src/css/style.css">
     <script src="./src/js/vue.min.js"></script>
 </head>
 <body>
     <div id="app">
-        {{ produtos }}
+
+        <header class="header">
+            <img class="logo" src="./assets/techno.svg" alt="Techno">
+            <div class="carrinho_menu">{{ carrinhoTotal }} | </div>
+        </header>
+
+        <section class="produtos">
+            <div v-for="item in produtos" :key="item.id" @click="abrirModal(item.id)"  class="produto">
+                <img :src="item.img" :alt="item.nome" class="produto_img">
+                <div class="produto_info">
+                    <span class="produto_preco">{{ item.preco | formaterPreco}}</span>
+                    <h2 class="produto_titulo">{{ item.nome }}</h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="modal" v-if="produto" @click="fecharModal">
+            <div class="modal_container">
+                <div class="modal_img">
+                    <img :src="produto.img" :alt="produto.nome">
+                </div>
+                <div class="modal_dados">
+                    <button @click="produto = false" class="modal_fechar">X</button>
+                    <span class="modal_preco">{{ produto.preco }}</span>
+                    <h2 class="modal_titulo">{{ produto.nome }}</h2>
+                    <p>{{ produto.descricao }}</p>
+                    <button class="modal_btn">Adiciona Item</button>
+                </div>
+
+                <div class="avaliacoes">
+                    <h2 class="avaliacoes_subtitulo"></h2>
+                    <ul>
+                        <li v-for="avaliacao in produto.avaliacoes" class="avaliacao">
+                            <p class="avaliacao_descricao">{{ avaliacao.descricao }}</p>
+                            <p class="avaliacao_usuario">{{ avaliacao.nome }} | {{ avaliacao.estrelas }} estrelas</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="./src/js/app.js"></script>
