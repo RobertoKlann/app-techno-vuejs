@@ -12,7 +12,7 @@ Tabela de conteúdos
 
 ## 💻 Sobre o projeto
 
-Techno - e-commerce de produtos com Vue.js, app com finalidade de estudos.
+Techno e-commerce de produtos com Vue.js, app com finalidade de estudos.
 
 ---
 
@@ -32,7 +32,7 @@ $ git clone https://github.com/RobertoKlann/app-techno-vuejs.git
 
 # Abra o projeto no VSCode
 
-# Incie a aplicação no LiveServer do VSCode
+# Inicie a aplicação no LiveServer do VSCode
 ```
 ---
 
